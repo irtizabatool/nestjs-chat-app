@@ -13,23 +13,17 @@ $(function () {
           receiver: receiver.val(),
         },
         success: function (response) {
-          if (response.chats !== '') {
-            console.log(response.chats);
-            response.chats.forEach((user) => {
-              if (user.sender === sender.val()) {
-                $('#messages').append(
-                  '<p style="text-align:left">' + user.message + '<p>',
-                );
-              } else {
-                $('#messages').append(
-                  '<p style="text-align:right">' + user.message + '<p>',
-                );
-              }
-              console.log(user.sender);
-            });
-          } else {
-            $('#messages').append('<p style="text-align:center"> <p>');
-          }
+          response.forEach((user) => {
+            if (user.sender === sender.val()) {
+              $('#messages').append(
+                '<p style="text-align:left">' + user.message + '<p>',
+              );
+            } else {
+              $('#messages').append(
+                '<p style="text-align:right">' + user.message + '<p>',
+              );
+            }
+          });
         },
       });
     }
@@ -49,23 +43,17 @@ $(function () {
           receiver: sender.val(),
         },
         success: function (response) {
-          if (response.chats !== '') {
-            console.log(response.chats);
-            response.dta.forEach((user) => {
-              if (user.sender === sender.val()) {
-                $('#messages').append(
-                  '<p style="text-align:left">' + user.message + '<p>',
-                );
-              } else {
-                $('#messages').append(
-                  '<p style="text-align:right">' + user.message + '<p>',
-                );
-              }
-              console.log(user.sender);
-            });
-          } else {
-            $('#messages').append('<p style="text-align:center"> <p>');
-          }
+          response.forEach((user) => {
+            if (user.sender === sender.val()) {
+              $('#messages').append(
+                '<p style="text-align:left">' + user.message + '<p>',
+              );
+            } else {
+              $('#messages').append(
+                '<p style="text-align:right">' + user.message + '<p>',
+              );
+            }
+          });
         },
       });
     }
@@ -87,7 +75,6 @@ $(function () {
           message: message1.val(),
         }),
         success: function (response) {
-          console.log(response);
           message1.val('');
           $('#sender').change();
         },
@@ -113,7 +100,6 @@ $(function () {
           message: message2.val(),
         }),
         success: function (response) {
-          console.log(response);
           message2.val('');
           $('#sender').change();
         },

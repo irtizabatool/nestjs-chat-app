@@ -10,7 +10,7 @@ export class ChatsService {
     return this.chats;
   }
 
-  getMessages(filterDto: FilterDto): string {
+  getMessages(filterDto: FilterDto) {
     const { sender, receiver } = filterDto;
     let chats = this.getAllMessages();
     chats = chats.filter(
@@ -18,7 +18,7 @@ export class ChatsService {
         (txt.sender === sender && txt.receiver === receiver) ||
         (txt.sender === receiver && txt.receiver === sender),
     );
-    return JSON.stringify(chats);
+    return chats;
   }
 
   insertMessage(createChatDto: CreateChatDto): Chat {
